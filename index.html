@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Basic Calculator</title>
+ <style>
+ #container-outer{
+ background-color: #a9a9a9;
+ width: 550px;
+ height: 205px;
+ text-align: center;
+ padding: 40px;
+ }
+ #calculator {
+ width: 300px;
+ margin: 0 auto;
+ filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.8));
+ }
+ input[type="text"] {
+ width: 70%;
+ height: 40px;
+ font-size: 20px;
+ margin-bottom: 0px;
+ float: left;
+ border: none;
+ background-color: #ffffff;
+ }
+ button {
+ background-color: #000000;
+ color: #fff;
+ width: 70px;
+ height: 40px;
+ font-size: 20px;
+ border: none;
+ float: left;
+ }
+ </style>
+</head>
+<body>
+ <div id="container-outer">
+ <div id="calculator">
+ <input type="text" id="display" disabled>
+ <button onclick="clearDisplay()" style="background-color:#2e8b86;">AC</button>
+ <button onclick="appendToDisplay('9')">9</button>
+ <button onclick="appendToDisplay('8')">8</button>
+ <button onclick="appendToDisplay('7')">7</button>
+ <button onclick="appendToDisplay('+')" style="background-color:#808080;">+</button>
+ <button onclick="appendToDisplay('4')">4</button>
+ <button onclick="appendToDisplay('5')">5</button>
+ <button onclick="appendToDisplay('6')">6</button>
+ <button onclick="appendToDisplay('-')" style="background-color:#808080;">-
+</button>
+ <button onclick="appendToDisplay('1')">1</button>
+ <button onclick="appendToDisplay('2')">2</button>
+ <button onclick="appendToDisplay('3')">3</button>
+ <button onclick="appendToDisplay('/')" style="background-color:#808080;">/</button>
+ <button onclick="appendToDisplay('.')">.</button>
+ <button onclick="appendToDisplay('0')">0</button>
+ <button onclick="calculateResult()">=</button>
+ <button onclick="appendToDisplay('*')" style="background-color:#808080;">*</button>
+ </div>
+ </div>
+ <script>
+ function appendToDisplay(value) {
+ document.getElementById("display").value += value;
+ }
+ function clearDisplay() {
+ document.getElementById("display").value = '';
+ }
+ function calculateResult() {
+ const expression = document.getElementById("display").value;
+ try {
+ const result = eval(expression);
+ document.getElementById("display").value = result;
+ } catch (error) {
+ document.getElementById("display").value = 'Error';
+ }
+ }
+ </script>
+</body>
+</html>
